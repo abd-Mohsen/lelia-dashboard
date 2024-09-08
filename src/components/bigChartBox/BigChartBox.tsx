@@ -7,60 +7,18 @@ import {
   YAxis,
 } from "recharts";
 import "./bigChartBox.scss";
+import {areaChartData} from "../../data.ts";
 
-const data = [
-  {
-    name: "Sun",
-    books: 4000,
-    clothes: 2400,
-    electronic: 2400,
-  },
-  {
-    name: "Mon",
-    books: 3000,
-    clothes: 1398,
-    electronic: 2210,
-  },
-  {
-    name: "Tue",
-    books: 2000,
-    clothes: 9800,
-    electronic: 2290,
-  },
-  {
-    name: "Wed",
-    books: 2780,
-    clothes: 3908,
-    electronic: 2000,
-  },
-  {
-    name: "Thu",
-    books: 1890,
-    clothes: 4800,
-    electronic: 2181,
-  },
-  {
-    name: "Fri",
-    books: 2390,
-    clothes: 3800,
-    electronic: 2500,
-  },
-  {
-    name: "Sat",
-    books: 3490,
-    clothes: 4300,
-    electronic: 2100,
-  },
-];
-
+//TODO get hidden when screen is too small (mobile)
+//TODO numbers on y-axis are WRONG
 const BigChartBox = () => {
   return (
     <div className="bigChartBox">
-      <h1>Revenue Analytics</h1>
+      <h1>Reports Analytics</h1>
       <div className="chart">
         <ResponsiveContainer width="99%" height="100%">
           <AreaChart
-            data={data}
+            data={areaChartData}
             margin={{
               top: 10,
               right: 30,
@@ -73,24 +31,17 @@ const BigChartBox = () => {
             <Tooltip />
             <Area
               type="monotone"
-              dataKey="electronic"
-              stackId="1"
-              stroke="#8884d8"
-              fill="#8884d8"
-            />
-            <Area
-              type="monotone"
-              dataKey="clothes"
-              stackId="1"
-              stroke="#82ca9d"
-              fill="#82ca9d"
-            />
-            <Area
-              type="monotone"
-              dataKey="books"
+              dataKey="reports"
               stackId="1"
               stroke="#ffc658"
               fill="#ffc658"
+            />
+            <Area
+              type="monotone"
+              dataKey="sheets"
+              stackId="1"
+              stroke="#82ca9d"
+              fill="#186e40"
             />
           </AreaChart>
         </ResponsiveContainer>
