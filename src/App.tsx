@@ -18,7 +18,7 @@ import {
 const queryClient = new QueryClient();
 
 function App() {
-  const Layout = () => {
+  function Layout(){
     return (
       <div className="main">
         <Navbar />

@@ -1,11 +1,6 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import "./pieChartBox.scss";
-
-const data = [
-  { name: "Admin", value: 400, color: "#0088FE" },
-  { name: "Sales man", value: 300, color: "#00C49F" },
-  { name: "Supervisor", value: 300, color: "#FFBB28" },
-];
+import {usersPercentageData} from "../../data";
 
 const PieChartBox = () => {
   return (
@@ -18,13 +13,13 @@ const PieChartBox = () => {
               contentStyle={{ background: "white", borderRadius: "5px" }}
             />
             <Pie
-              data={data}
+              data={usersPercentageData}
               innerRadius={"70%"}
               outerRadius={"90%"}
               paddingAngle={5}
               dataKey="value"
             >
-              {data.map((item) => (
+              {usersPercentageData.map((item) => (
                 <Cell key={item.name} fill={item.color} />
               ))}
             </Pie>
@@ -32,7 +27,7 @@ const PieChartBox = () => {
         </ResponsiveContainer>
       </div>
       <div className="options">
-        {data.map((item) => (
+        {usersPercentageData.map((item) => (
           <div className="option" key={item.name}>
             <div className="title">
               <div className="dot" style={{ backgroundColor: item.color }} />

@@ -1,3 +1,4 @@
+import OptionsMenu from "../OptionsMenu";
 import "./navbar.scss";
 
 const Navbar = () => {
@@ -19,10 +20,11 @@ const Navbar = () => {
           />
           <span>Jane</span>
         </div>
-        <img src="/settings.svg" alt="" className="icon"
+        {/* <img src="/settings.svg" alt="" className="icon"
          onClick={
           () => console.log("press")
-         }/>
+         }/> */}
+         <OptionsMenu/>
       </div>
     </div>
   );
