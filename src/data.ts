@@ -758,8 +758,3 @@ export const areaChartData = [
   },
 ];
 
-export const usersPercentageData = [
-  { name: "Admin", value: 400, color: "#0088FE" },
-  { name: "Sales man", value: 300, color: "#00C49F" },
-  { name: "Supervisor", value: 300, color: "#FFBB28" },
-];

@@ -1,8 +1,23 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import "./pieChartBox.scss";
-import {usersPercentageData} from "../../data";
+import { useQuery } from "@tanstack/react-query";
+import UsersByRoleService from "../../services/users_by_role_service";
 
-const PieChartBox = () => {
+function PieChartBox(){
+
+  const service = new UsersByRoleService();
+
+  const {status, error, data } = useQuery(["chart"], service.fetchUsersByRoles)
+
+  if(status == "loading") return <p>loading..</p>;
+  if(status == "error") return <p>error {/*error.message*/}</p>; //TODO find a way to ignore error in TS
+
+  const usersPercentageData = [
+    { name: "Admin", value: data.admin || 0, color: "#0088FE" },
+    { name: "Sales man", value: data.salesman || 0, color: "#00C49F" },
+    { name: "Supervisor", value: data.supervisor || 0, color: "#FFBB28" },
+  ];
+
   return (
     <div className="pieChartBox">
       <h1>Users by Role</h1>
