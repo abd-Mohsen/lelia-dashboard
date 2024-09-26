@@ -9,12 +9,12 @@ function PieChartBox(){
 
   const {status, error, data } = useQuery(["chart"], service.fetchUsersByRoles)
 
-  if(status == "loading") return <p>loading..</p>;
+  if(status == "loading") return <p>loading..</p>; //TODO components for loading and error (use tailwind to style them)
   if(status == "error") return <p>error {/*error.message*/}</p>; //TODO find a way to ignore error in TS
-
+  
   const usersPercentageData = [
     { name: "Admin", value: data.admin || 0, color: "#0088FE" },
-    { name: "Sales man", value: data.salesman || 0, color: "#00C49F" },
+    { name: "Salesman", value: data.salesman || 0, color: "#00C49F" },
     { name: "Supervisor", value: data.supervisor || 0, color: "#FFBB28" },
   ];
 
