@@ -2,14 +2,15 @@ import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import "./pieChartBox.scss";
 import { useQuery } from "@tanstack/react-query";
 import UsersByRoleService from "../../services/users_by_role_service";
+import LoadingIndicator from "../loadingIndicator/LoadingIndicator";
 
 function PieChartBox(){
 
   const service = new UsersByRoleService();
 
-  const {status, error, data } = useQuery(["chart"], service.fetchUsersByRoles)
-
-  if(status == "loading") return <p>loading..</p>; //TODO components for loading and error (use tailwind to style them)
+  const {status, data } = useQuery(["users_by_roles"], service.fetchUsersByRoles)
+  
+  if(status == "loading") return (<LoadingIndicator/>); //TODO component for error (use tailwind to style them)
   if(status == "error") return <p>error {/*error.message*/}</p>; //TODO find a way to ignore error in TS
   
   const usersPercentageData = [

@@ -1,25 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import User from "../../models/user";
 import TopSalesMenService from "../../services/top_salesmen_service";
 import "./topBox.scss"
+import LoadingIndicator from "../loadingIndicator/LoadingIndicator";
 
 function TopBox(){
-
-  const topSalesmen1 = [
-    {
-      id: 1,
-      img: "https://images.pexels.com/photos/8405873/pexels-photo-8405873.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-      name: "Elva McDonald",
-      email: "elva@gmail.com",
-      amount: "10",
-    },
-  ];
-
   const service = new TopSalesMenService();
 
   const {status, data } = useQuery(["top_salesmen"], service.fetchTopSalesmen)
 
-  if(status == "loading") return <p>loading..</p>; //TODO components for loading and error (use tailwind to style them)
+  if(status == "loading") return <LoadingIndicator/>; //TODO components for loading and error (use tailwind to style them)
   if(status == "error") return <p>error {/*error.message*/}</p>; //TODO find a way to ignore error in TS
 
   const topSalesmen = data ?? [];
